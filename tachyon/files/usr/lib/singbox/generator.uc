@@ -539,6 +539,8 @@ function base_config(settings, service_address, runtime_context) {
         ? (match(sb_version_val, /^v?1\.1[0-3]\./) != null)
         : !is_extended_variant;
 
+    let route_section = runtime_route.config(settings, runtime_context);
+    route_section.default_http_client = "ruleset-http";
     let cache_file_section = {
         enabled: true,
         path: cache_path,
@@ -558,10 +560,11 @@ function base_config(settings, service_address, runtime_context) {
         dns: dns_section,
         ntp: {},
         certificate: {},
+        http_clients: [{ tag: "ruleset-http" }],
         endpoints: [],
         inbounds,
         outbounds: default_outbounds,
-        route: runtime_route.config(settings, runtime_context),
+        route: route_section,
         services: [],
         experimental: {
             cache_file: cache_file_section,
