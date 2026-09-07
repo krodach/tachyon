@@ -3,7 +3,7 @@
 
 INSTALLER_VERSION="2.0.1"
 
-REPO_OWNER="Dushnilin"
+REPO_OWNER="krodach"
 REPO_NAME="tachyon"
 
 # ─── TUI helpers (self-contained, no external deps) ─────────────────────────
